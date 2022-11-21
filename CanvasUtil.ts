@@ -1,7 +1,7 @@
 /**
- * Helper utlity class for working with the HTML Canvas.
+ * Helper utlity class for working with the HTML Canvas Element.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author Frans Blauw
  */
 
@@ -117,7 +117,7 @@ export default class CanvasUtil {
     const ctx: CanvasRenderingContext2D = CanvasUtil.getCanvasContext(canvas);
     ctx.beginPath();
     ctx.strokeStyle = color;
-    ctx.arc(centerX, centerY, radius * (Math.PI / 180), 0, 2 * Math.PI);
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.stroke();
   }
 
@@ -165,7 +165,7 @@ export default class CanvasUtil {
     const ctx: CanvasRenderingContext2D = CanvasUtil.getCanvasContext(canvas);
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.arc(centerX, centerY, radius * (Math.PI / 180), 0, 2 * Math.PI);
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.fill();
   }
 
