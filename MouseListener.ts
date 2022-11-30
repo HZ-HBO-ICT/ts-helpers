@@ -9,7 +9,7 @@ export interface MouseCoordinates {
   y: number;
 }
 
-export class MouseListener {
+export default class MouseListener {
   public static readonly BUTTON_LEFT = 0;
 
   public static readonly BUTTON_MIDDLE = 1;
@@ -22,6 +22,11 @@ export class MouseListener {
 
   private buttonQueried: Record<number, boolean> = {};
 
+  /**
+   * 
+   * @param canvas the canvas element to which the relative coordinates should given
+   * @param disableContextMenu true to disable the context (right click) menu. Default: false
+   */
   public constructor(canvas: HTMLCanvasElement, disableContextMenu: boolean = false) {
     canvas.addEventListener('mousemove', (ev: MouseEvent) => {
       this.mouseCoordinates = {
@@ -43,10 +48,21 @@ export class MouseListener {
     }
   }
 
+  /**
+   * Checks whether a mouse button is currently down.
+   *
+   * @param buttonCode the mouse button to check
+   * @returns `true` when the specified button is currently down
+   */
   public isButtonDown(buttonCode: number = 0): boolean {
     return this.buttonDown[buttonCode];
   }
 
+  /**
+   *
+   * @param buttonCode the mouse button to check
+   * @returns `true` when the specified button was pressed
+   */
   public buttonPressed(buttonCode: number = 0): boolean {
     if (this.buttonQueried[buttonCode] === true) return false;
     if (this.buttonDown[buttonCode] === true) {
@@ -56,6 +72,11 @@ export class MouseListener {
     return false;
   }
 
+  /**
+   * Returns the current mouse coordinates in an object
+   *
+   * @returns MouseCoordinates object with current position of mouse
+   */
   public getMousePosition(): MouseCoordinates {
     return this.mouseCoordinates;
   }
