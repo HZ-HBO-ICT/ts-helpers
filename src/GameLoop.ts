@@ -12,8 +12,6 @@
  *
  * @see https://gameprogrammingpatterns.com/game-loop.html
  * @author BugSlayer
- * 
- * @version 1.5.0
  */
 
 export abstract class Game {
@@ -141,7 +139,7 @@ export class GameLoop {
    *   `performance.now()`, indicating the point in time when `requestAnimationFrame()`
    *   starts to execute callback functions
    */
-  private step (timestamp: number) {
+  private step = (timestamp: number): void => {
     // Handle first animation frame
     if (this.isInState(GameLoop.STATE_STARTING)) {
       this.state = GameLoop.STATE_RUNNING;
@@ -150,15 +148,15 @@ export class GameLoop {
     this.game.processInput();
 
     // Let the game update itself
-    let shouldStop = false;
+    let shouldStop: boolean = false;
     if (this.mode === GameLoop.PLAY_CATCH_UP) {
-      const step = 1;
+      const step: number = 1;
       while (this.previousElapsed < timestamp && !shouldStop) {
         shouldStop = !this.game.update(step);
         this.previousElapsed += step;
       }
     } else {
-      const elapsed = timestamp - this.previousElapsed;
+      const elapsed: number = timestamp - this.previousElapsed;
       shouldStop = !this.game.update(elapsed);
       this.previousElapsed = timestamp;
     }
@@ -174,9 +172,9 @@ export class GameLoop {
     }
 
     // Handle time measurement and analysis
-    const now = performance.now();
-    const stepTime = timestamp - now;
-    const frameTime = now - this.frameEnd;
+    const now: number = performance.now();
+    const stepTime: number = timestamp - now;
+    const frameTime: number = now - this.frameEnd;
     this.fps = Math.round(1000 / frameTime);
     this.load = stepTime / frameTime;
     this.frameEnd = now;
