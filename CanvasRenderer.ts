@@ -1,7 +1,7 @@
 /**
  * Helper utlity class for working with the HTML Canvas Element.
  *
- * @version 1.2
+ * @version 1.2.0
  * @author Frans Blauw
  */
 
@@ -38,7 +38,7 @@ export default class CanvasRenderer {
    * @returns the image
    */
   public static loadNewImage(source: string): HTMLImageElement {
-    const img = new Image();
+    const img: HTMLImageElement = new Image();
     img.src = source;
     return img;
   }
@@ -138,7 +138,7 @@ export default class CanvasRenderer {
     width: number,
     height: number,
     color: string = 'red',
-  ) {
+  ): void {
     const ctx: CanvasRenderingContext2D = CanvasRenderer.getCanvasContext(canvas);
     ctx.beginPath();
     ctx.strokeStyle = color;
@@ -186,7 +186,7 @@ export default class CanvasRenderer {
     width: number,
     height: number,
     color: string = 'red',
-  ) {
+  ): void {
     const ctx: CanvasRenderingContext2D = CanvasRenderer.getCanvasContext(canvas);
     ctx.beginPath();
     ctx.fillStyle = color;
