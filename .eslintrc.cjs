@@ -26,6 +26,7 @@ module.exports = {
     'padded-blocks': 'warn',
     'brace-style': 'off',
     '@typescript-eslint/brace-style': ['warn'],
+    '@typescript-eslint/indent': 'warn',
 
     // Code Quality
     'no-console': 'off',
@@ -33,7 +34,7 @@ module.exports = {
     'no-empty': 'warn',
     'no-var': 'warn',
     'prefer-const': 'warn',
-    "@typescript-eslint/semi": "error",
+    '@typescript-eslint/semi': 'error',
 
     'curly': ['warn', 'all'],
     'no-else-return': 'off',
