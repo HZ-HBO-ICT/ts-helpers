@@ -17,57 +17,51 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
+    // Styling and Formatting
     'camelcase': 'off',
-    'no-console': 'off',
     'linebreak-style': 'off',
-    'no-empty': 'warn',
-    'no-multiple-empty-lines': 'warn',
-    'no-else-return': 'off',
     'max-len': 'warn',
+    'no-trailing-spaces': ['warn', { 'skipBlankLines': true, 'ignoreComments': true }],
+    'no-multiple-empty-lines': 'warn',
+    'padded-blocks': 'warn',
+    'brace-style': 'off',
+    '@typescript-eslint/brace-style': ['warn'],
+
+    // Code Quality
+    'no-console': 'off',
+    'class-methods-use-this': 'warn',
+    'no-empty': 'warn',
+    'no-var': 'warn',
+    'prefer-const': 'warn',
+    "@typescript-eslint/semi": "error",
+
+    'curly': ['warn', 'all'],
+    'no-else-return': 'off',
+    'no-plusplus': ['warn', { 'allowForLoopAfterthoughts': true }],
+
+    // TypeScript Specific
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/triple-slash-reference': 'off',
+
+    // TypeScript Types and Classes
     'filenames/match-exported': 'error',
-    'no-plusplus': ["warn", { "allowForLoopAfterthoughts": true }],
-    'no-trailing-spaces': ["warn", { "ignoreComments": true }],
-    'padded-blocks': "warn",
-    'jsdoc/tag-lines': 'off',
-    'jsdoc/require-jsdoc': [
-      'warn',
-      {
-        'publicOnly': true,
-        'checkConstructors': false,
-        'contexts': [
-          'MethodDefinition[key.name!=/get.*/][key.name!=/set.*/]',
-        ],
-        'require': {
-          'ClassDeclaration': false,
-          'MethodDefinition': false
-        },
-      }
-    ],
-    'jsdoc/require-param-type': 'off',
-    'jsdoc/require-returns-type': 'off',
-    'jsdoc/no-types': [
-      'warn',
-      {
-        'contexts': ['any']
-      }
-    ],
+    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {
         'accessibility': 'explicit',
       }
     ],
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/explicit-member-accessibility': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
     '@typescript-eslint/no-inferrable-types': 'off',
-    '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/typedef': [
-      "error",
+      'error',
       {
-        "variableDeclaration": true
+        'variableDeclaration': true
       }
     ],
+
+    // Naming Conventions
     '@typescript-eslint/naming-convention': [
       'warn',
       {
@@ -95,11 +89,36 @@ module.exports = {
       },
       {
         'selector': 'import',
-        'format': ['camelCase', 'PascalCase'],
+        'format': ['PascalCase'],
       },
       {
         'selector': 'typeLike',
         'format': ['PascalCase']
+      }
+    ],
+    
+    // Documentation
+    'jsdoc/tag-lines': 'off',
+    'jsdoc/require-jsdoc': [
+      'warn',
+      {
+        'publicOnly': true,
+        'checkConstructors': false,
+        'contexts': [
+          'MethodDefinition[key.name!=/get.*/][key.name!=/set.*/]',
+        ],
+        'require': {
+          'ClassDeclaration': false,
+          'MethodDefinition': false
+        },
+      }
+    ],
+    'jsdoc/require-param-type': 'off',
+    'jsdoc/require-returns-type': 'off',
+    'jsdoc/no-types': [
+      'warn',
+      {
+        'contexts': ['any']
       }
     ],
   }

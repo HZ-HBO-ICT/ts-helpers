@@ -12,7 +12,9 @@ export default class CanvasRenderer {
    */
   private static getCanvasContext(canvas: HTMLCanvasElement): CanvasRenderingContext2D {
     const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
-    if (ctx === null) throw new Error('Canvas Rendering Context is null');
+    if (ctx === null) {
+      throw new Error('Canvas Rendering Context is null');
+    }
     return ctx;
   }
 

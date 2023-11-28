@@ -23,7 +23,7 @@ export default class MouseListener {
   private buttonQueried: Record<number, boolean> = {};
 
   /**
-   * 
+   *
    * @param canvas the canvas element to which the relative coordinates should given
    * @param disableContextMenu true to disable the context (right click) menu. Default: false
    */
@@ -64,7 +64,9 @@ export default class MouseListener {
    * @returns `true` when the specified button was pressed
    */
   public buttonPressed(buttonCode: number = 0): boolean {
-    if (this.buttonQueried[buttonCode] === true) return false;
+    if (this.buttonQueried[buttonCode] === true) {
+      return false;
+    }
     if (this.buttonDown[buttonCode] === true) {
       this.buttonQueried[buttonCode] = true;
       return true;
